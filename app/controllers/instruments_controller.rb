@@ -1,5 +1,5 @@
-class InstrumentsController < InheritedResources::Base
-before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+class InstrumentsController < ApplicationController
+  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /instruments
@@ -71,6 +71,5 @@ before_action :set_instrument, only: [:show, :edit, :update, :destroy]
     # Never trust parameters from the scary internet, only allow the white list through.
     def instrument_params
       params.require(:instrument).permit(:brand, :model, :description, :condition, :finish, :title, :price, :image)
+    end
 end
-end
-
