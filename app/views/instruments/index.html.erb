@@ -5,6 +5,10 @@
       <h1 class="title">
         Browse the latest instruments on Flanger
       </h1>
+      <%= form_tag(instruments_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+  <%= submit_tag "Search" %>
+<% end %>
     </div>
   </div>
 </section>
