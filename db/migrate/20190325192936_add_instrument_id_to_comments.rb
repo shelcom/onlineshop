@@ -1,0 +1,5 @@
+class AddInstrumentIdToComments < ActiveRecord::Migration[5.2]
+  def change
+  	add_column :comments, :instrument_id, :integer
+  end
+end

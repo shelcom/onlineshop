@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :line_items
   resources :carts
-  resources :instruments
+  resources :instruments do
+  	resources :comments
+  end
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -71,4 +71,16 @@
     <%= link_to 'Edit', edit_instrument_path(@instrument), class: 'button' %>
       <%= link_to 'Delete', @instrument, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
   <% end %>
+
+  <section class="section comments">
+    <div class="container">
+      <h2 class="subtitle is-5"><strong><%= @instrument.comments.count %></strong> Comments</h2>
+      <%= render @instrument.comments %>
+      <div class="comment-form">
+        <hr />
+        <h3 class="subtitle is-3">Leave a reply</h3>
+        <%= render 'comments/form' %>      
+      </div>
+    </div>
+  </section>
 </section>
