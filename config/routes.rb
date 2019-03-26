@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :carts
   resources :instruments do
-  	resources :comments
+  	resources :comments, :likes
   end
   
   devise_for :admin_users, ActiveAdmin::Devise.config
