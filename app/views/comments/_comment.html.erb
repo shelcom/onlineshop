@@ -3,14 +3,14 @@
 		<div class="media-content">
 			<div class="content">
 				<p>
-					<% if comment.created_at != nil  %>  
-<p>Posted <%= distance_of_time_in_words(comment.instrument.created_at, comment.created_at) %> later</p>
-<% end %>
 				<strong><%= comment.name %>: </strong>
 				<%= comment.comment %>
 				</p>
 			</div>
 		</div>
+	<% if comment_author(comment) %>
 	<%= link_to 'Delete', [comment.instrument, comment], method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-danger" %>
+	<% end %>
 	</article>
+
 </div>
