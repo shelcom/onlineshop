@@ -10,6 +10,7 @@ before_action :authenticate_user!, except: [:index, :show]
 		flash[:notice] = "Your comment create!"
 		redirect_to instrument_path(@instrument)	
 	end
+	
 
 	def destroy
 		@instrument = Instrument.find(params[:instrument_id])
@@ -24,7 +25,6 @@ before_action :authenticate_user!, except: [:index, :show]
 	def set_comment
 	unless current_user
         @comment = Comment.find(params[:id])
-        flash[:notice] = "Your comment destroy!"
     end
     end
 	

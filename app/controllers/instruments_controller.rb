@@ -8,7 +8,7 @@ class InstrumentsController < ApplicationController
 
   def index
    if params[:search]
-      @instruments = Instrument.search(params[:search]).order("created_at desc")
+      @instruments = Instrument.search(params[:search]).order("created_at desc").page(params[:page])
     else
       @instruments = Instrument.all.order('created_at desc').page(params[:page])
     end

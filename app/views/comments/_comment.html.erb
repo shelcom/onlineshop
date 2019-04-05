@@ -10,6 +10,7 @@
 		</div>
 	<% if comment_author(comment) %>
 	<%= link_to 'Delete', [comment.instrument, comment], method: :delete, remote: :true, data: { confirm: "Are you sure ?" }, class: "button is-danger" %>
+	<%= link_to 'Edit', [comment.instrument, comment], method: :edit, remote: :true,  class: "button is-danger" %>
 	<% end %>
 	</article>
 
