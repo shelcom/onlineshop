@@ -4,6 +4,7 @@ belongs_to :user, optional: true
 has_many   :line_items
 has_many   :comments
 has_many   :likes, dependent: :destroy
+paginates_per 8
 mount_uploader :image, ImageUploader
   serialize :image, JSON # If you use SQLite, add this line
 

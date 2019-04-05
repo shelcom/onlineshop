@@ -33,6 +33,7 @@ gem 'gravatar_image_tag'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'kaminari'
 
 
 

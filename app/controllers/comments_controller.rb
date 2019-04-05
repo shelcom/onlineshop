@@ -7,6 +7,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	 	@comment = @instrument.comments.create(comment_params.merge(user_id: current_user.id))
 		@comment = current_user.comments.build
 		@comment.user_id = current_user.id
+		flash[:notice] = "Your comment create!"
 		redirect_to instrument_path(@instrument)	
 	end
 
@@ -14,6 +15,7 @@ before_action :authenticate_user!, except: [:index, :show]
 		@instrument = Instrument.find(params[:instrument_id])
 		@comment = @instrument.comments.find(params[:id])
 		@comment.destroy
+		flash[:notice] = "Your comment destroy!"
 		redirect_to instrument_path(@instrument)
 	end
 
@@ -22,6 +24,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	def set_comment
 	unless current_user
         @comment = Comment.find(params[:id])
+        flash[:notice] = "Your comment destroy!"
     end
     end
 	
