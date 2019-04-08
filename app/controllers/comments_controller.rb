@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 before_action :set_comment, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, except: [:index, :show]
 	
+
 	def create
 		@instrument = Instrument.find(params[:instrument_id])
 	 	@comment = @instrument.comments.create(comment_params.merge(user_id: current_user.id))
@@ -10,14 +11,18 @@ before_action :authenticate_user!, except: [:index, :show]
 		flash[:notice] = "Your comment create!"
 		redirect_to instrument_path(@instrument)	
 	end
-	
 
 	def destroy
 		@instrument = Instrument.find(params[:instrument_id])
 		@comment = @instrument.comments.find(params[:id])
-		@comment.destroy
-		flash[:notice] = "Your comment destroy!"
-		redirect_to instrument_path(@instrument)
+		if current_user.id == @comment.user_id
+        @comment.destroy
+        flash[:notice] = 'Your comment destroy!'
+        redirect_to instrument_path(@instrument)
+		else
+	    flash[:notice] = 'You cannot destroy this comment!' 
+	    redirect_to instrument_path(@instrument)
+		end
 	end
 
 	private 
