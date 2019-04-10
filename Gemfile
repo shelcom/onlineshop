@@ -36,7 +36,8 @@ gem 'devise'
 gem 'kaminari'
 gem 'mailcatcher'
 gem 'stripe'
-
+gem 'rubocop', require: false
+gem 'rubocop-performance'
 
 
 

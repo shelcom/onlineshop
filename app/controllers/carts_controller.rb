@@ -27,30 +27,31 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-# Amount in cents
-  @amount = number_to_currency(@cart.total_price)
+    # Amount in cents
+    @amount = number_to_currency(@cart.total_price)
 
-  customer = Stripe::Customer.create({
+    customer = Stripe::Customer.create({
     email: params[:stripeEmail],
     source: params[:stripeToken],
-  })
+    })
 
-  charge = Stripe::Charge.create({
+    charge = Stripe::Charge.create({
     customer: customer.id,
     amount: 'Rails Stripe customer',
     description: 'Rails Stripe customer',
     currency: 'usd',
-  })
+    })
 
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+    rescue Stripe::CardError => e
+    flash[:error] = e.message
+      
+      respond_to do |format|
+        if @cart.save
+          format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+          format.json { render :show, status: :created, location: @cart }
+        else
+          format.html { render :new }
+          format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
   end

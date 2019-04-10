@@ -3,7 +3,6 @@ class Cart < ApplicationRecord
 
   def add_instrument(instrument)
     current_item = line_items.find_by(instrument_id: instrument.id)
-
     if current_item
       current_item.increment(:quantity)
     else

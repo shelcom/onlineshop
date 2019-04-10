@@ -19,6 +19,13 @@ $link-hover: #222;
 @import "bulma";
 @import "functions";
 
+.pagination {
+    justify-content: none;
+    margin-top: 20px;
+    display: block;
+    width: 1000px;
+    margin-left: 91px;
+    }
 .container .box{
   width:80%;
 }
