@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 	def destroy
 		@instrument = Instrument.find(params[:instrument_id])
 		@comment = @instrument.comments.find(params[:id])
-		if current_user.id == @comment.user_id
+        if current_user.id == @comment.user_id
         @comment.destroy
         flash[:notice] = 'Your comment destroy!'
         redirect_to instrument_path(@instrument)
