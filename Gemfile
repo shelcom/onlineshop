@@ -34,7 +34,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
 gem 'kaminari'
-
+gem 'mailcatcher'
 gem 'stripe'
 gem 'rubocop', require: false
 gem 'rubocop-performance'
@@ -58,7 +58,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
   gem 'rspec-rails'
-  gem 'mailcatcher'
 end
 
 group :development do
